@@ -9,21 +9,24 @@ const getComputerChoice = () => {
 console.log();
 
 function compareChoices(playerSelection, computerSelection) {
+  const playerSelectionLowerCase = playerSelection.toLowerCase();
   if (
-    (playerSelection === "rock" && computerSelection === "scissors") ||
-    (playerSelection === "scissors" && computerSelection === "paper") ||
-    (playerSelection === "paper" && computerSelection === "rock")
+    (playerSelectionLowerCase === "rock" && computerSelection === "scissors") ||
+    (playerSelectionLowerCase === "scissors" &&
+      computerSelection === "paper") ||
+    (playerSelectionLowerCase === "paper" && computerSelection === "rock")
   ) {
-    return `You win! ${playerSelection} beats ${computerSelection}`;
+    return `You win! ${playerSelectionLowerCase} beats ${computerSelection}`;
   } else if (
-    (computerSelection === "rock" && playerSelection === "scissors") ||
-    (computerSelection === "scissors" && playerSelection === "paper") ||
-    (computerSelection === "paper" && playerSelection === "rock")
+    (computerSelection === "rock" && playerSelectionLowerCase === "scissors") ||
+    (computerSelection === "scissors" &&
+      playerSelectionLowerCase === "paper") ||
+    (computerSelection === "paper" && playerSelectionLowerCase === "rock")
   ) {
-    return `You lose! ${computerSelection} beats ${playerSelection}!`;
-  } else if (playerSelection === computerSelection) {
-    return `You both got ${playerSelection}! Try again!`;
+    return `You lose! ${computerSelection} beats ${playerSelectionLowerCase}!`;
+  } else if (playerSelectionLowerCase === computerSelection) {
+    return `You both got ${playerSelectionLowerCase}! Try again!`;
   }
 }
 
-console.log(compareChoices("rock", getComputerChoice()));
+console.log(compareChoices("SCISSORS", getComputerChoice()));
