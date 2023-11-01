@@ -1,6 +1,8 @@
-let playersChoice = "";
 const buttons = document.querySelectorAll("button");
 const startButton = document.querySelector("#start");
+const playerScoreBox = document.querySelector(".player-score");
+const computerScoreBox = document.querySelector(".computer-score");
+const roundResult = document.querySelector(".round-result");
 
 let playerScore = 0;
 let computerScore = 0;
@@ -13,16 +15,12 @@ const getComputerChoice = () => {
   return computerChoice;
 };
 
-const game = () => {
+const playRound = (playerSelection) => {
   // assign player choice w/ click
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      playersChoice = button.value;
-    });
-  });
 
   function compareChoices(playerSelection, computerSelection) {
     const playerSelectionLowerCase = playerSelection.toLowerCase();
+    if (playerSelection === "") alert("Please make a selection.");
     if (
       (playerSelectionLowerCase === "rock" &&
         computerSelection === "scissors") ||
@@ -31,8 +29,9 @@ const game = () => {
       (playerSelectionLowerCase === "paper" && computerSelection === "rock")
     ) {
       playerScore++;
+      playerScoreBox.textContent = `${playerScore}`;
       console.log(`Player Score is ${playerScore}`);
-      return `You win! ${playerSelectionLowerCase} beats ${computerSelection}`;
+      roundResult.textContent = `You win! ${playerSelectionLowerCase} beats ${computerSelection}`;
     } else if (
       (computerSelection === "rock" &&
         playerSelectionLowerCase === "scissors") ||
@@ -41,26 +40,22 @@ const game = () => {
       (computerSelection === "paper" && playerSelectionLowerCase === "rock")
     ) {
       computerScore++;
+      computerScoreBox.textContent = `${computerScore}`;
       console.log(`Computer score is ${computerScore}`);
-      return `You lose! ${computerSelection} beats ${playerSelectionLowerCase}!`;
+
+      roundResult.textContent = `You lose! ${computerSelection} beats ${playerSelectionLowerCase}!`;
     } else if (playerSelectionLowerCase === computerSelection) {
-      return `You both got ${playerSelectionLowerCase}! Try again!`;
+      roundResult.textContent = `You both got ${playerSelectionLowerCase}! Try again!`;
     }
   }
 
-  compareChoices(playersChoice, getComputerChoice());
-  if (playerScore > computerScore) {
-    // console.log("Congratulations! You win");
-  } else {
-    // console.log("Sorry, pal. You lose!");
-  }
-  // console.log(
-  // `The player's score is ${playerScore} and the computer's score is ${computerScore}!`
-  // );
+  compareChoices(playerSelection, getComputerChoice());
 };
 
-startButton.addEventListener("click", function () {
-  game();
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    playRound(button.value);
+  });
 });
 
 // console.log(game(3));
