@@ -2,17 +2,25 @@ const getComputerChoice = () => {
   const randomNumber = Math.floor(Math.random() * 3);
   const gameChoicesArray = ["rock", "paper", "scissors"];
   const computerChoice = gameChoicesArray[randomNumber];
-  //   console.log(computerChoice);
   return computerChoice;
 };
 
-// console.log();
+let playersChoice = "";
 
-// console.log(compareChoices("SCISSORS", getComputerChoice()));
+const buttons = document.querySelectorAll("button");
+const startButton = document.querySelector("#start");
 
-function game(num) {
+const game = () => {
   let playerScore = 0;
   let computerScore = 0;
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      playersChoice = button.value;
+    });
+  });
+
+  console.log(playersChoice);
 
   function compareChoices(playerSelection, computerSelection) {
     const playerSelectionLowerCase = playerSelection.toLowerCase();
@@ -40,8 +48,8 @@ function game(num) {
     }
   }
 
-  for (let i = 1; i <= num; i++) {
-    console.log(compareChoices("scissors", getComputerChoice()));
+  for (let i = 1; i <= 5; i++) {
+    compareChoices(playersChoice, getComputerChoice());
   }
   if (playerScore > computerScore) {
     console.log("Congratulations! You win");
@@ -51,8 +59,10 @@ function game(num) {
   console.log(
     `The player's score is ${playerScore} and the computer's score is ${computerScore}!`
   );
-}
+};
 
-game(5);
+startButton.addEventListener("click", function () {
+  game();
+});
 
 // console.log(game(3));
