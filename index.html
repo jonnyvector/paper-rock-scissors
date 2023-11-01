@@ -4,17 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="text/javascript" src="/script.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
     <title>Paper~Rock~Scissors</title>
   </head>
   <body>
-    <h1>Paper Rock Scissors</h1>
+    <h1 class="heading">ROCK PAPER SCISSORS</h1>
     <div class="button-container">
-      <button id="rock" value="rock">Rock</button>
-      <button id="paper" value="paper">Paper</button>
-      <button id="scissors" value="scissors">Scissors</button>
+      <div class="choice-container">
+        <img src="rock.png" />
+        <button id="rock" value="rock">Rock</button>
+      </div>
+      <div class="choice-container">
+        <img src="paper.png" />
+        <button id="paper" value="paper">Paper</button>
+      </div>
+      <div class="choice-container">
+        <img src="scissors.png" />
+        <button id="scissors" value="scissors">Scissors</button>
+      </div>
     </div>
-    <div>
+    <div class="start-container">
       <button id="start">Start Game</button>
+    </div>
+    <div class="score-container">
+      <div class="score">
+        <h3>Player Score</h3>
+      </div>
+      <div class="score">
+        <h3>Computer Score</h3>
+      </div>
     </div>
   </body>
 </html>
