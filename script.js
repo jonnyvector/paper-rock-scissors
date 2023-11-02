@@ -30,7 +30,6 @@ const playRound = (playerSelection) => {
     ) {
       playerScore++;
       playerScoreBox.textContent = `${playerScore}`;
-      console.log(`Player Score is ${playerScore}`);
       roundResult.textContent = `You win! ${playerSelectionLowerCase} beats ${computerSelection}`;
     } else if (
       (computerSelection === "rock" &&
@@ -41,7 +40,6 @@ const playRound = (playerSelection) => {
     ) {
       computerScore++;
       computerScoreBox.textContent = `${computerScore}`;
-      console.log(`Computer score is ${computerScore}`);
 
       roundResult.textContent = `You lose! ${computerSelection} beats ${playerSelectionLowerCase}!`;
     } else if (playerSelectionLowerCase === computerSelection) {
